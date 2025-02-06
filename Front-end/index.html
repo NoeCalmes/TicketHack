@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Your Trip</title>
@@ -27,11 +29,11 @@
                         <label for="arrival">Arrival:</label>
                         <input type="text" id="arrival" placeholder="Enter Arrival">
                         <label for="date">Date:</label>
-                        <input type="date" id="date">
+                        <input type="datetime-local" id="date">
                         <button type="submit">Search</button>
                     </form>
                 </div>
-                <div class="form-container">
+                <div id="result" class="form-container">
                     <div class="image-container">
                         <img src="images/train.png" alt="Travel Image">
                     </div>
@@ -41,4 +43,7 @@
         </div>
     </div>
 </body>
+
+<script src="./script.js"></script>
+
 </html>
