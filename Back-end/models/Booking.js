@@ -1,15 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const Trip = require('../models/Trip');
+const mongoose = require('mongoose');
 
-router.get('/', async (req, res) => {
-    const { departure, arrival, date } = req.query;
-    try {
-        const trips = await Trip.find({ departure, arrival, date });
-        res.json(trips);
-    } catch (err) {
-        res.status(500).json({ error: 'Erreur serveur' });
-    }
+const BookingSchema = new mongoose.Schema({
+    trips: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Trip' }],
+    bookingDate: { type: Date, default: Date.now }
 });
 
-module.exports = router;
+module.exports = mongoose.model('Booking', BookingSchema);

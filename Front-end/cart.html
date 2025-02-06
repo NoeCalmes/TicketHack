@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="./images/train.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Trip</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="cart">
+    <nav class="navbar">
+        <div class="logo"><a href="index.html" style="text-decoration: none;">TicketHack</a></div>
+        <ul class="nav-links">
+            <li><a href="./cart.html"  style="text-decoration: none;">Cart</a></li>
+            <li><a href="./booking.html"  style="text-decoration: none;">Booking</a></li>
+        </ul>
+    </nav>
+    
+    <div class="background" style="background-image: unset;">
+        <div class="panier">
+            <div class="content-panier">
+                <div id="cart-container"></div>
+            </div>
+            <div class="validation-panier">
+                <div id="panier-total" style="margin-left: 30px; margin-top: 15px;"><p>Total : €</p></div>
+                <button class="btn-panier" id="purchase-btn">Purchase</button>
+            </div>
+        </div>         
+    </div>
+</body>
+
+<script src="./cart.js"></script>
+
+</html>

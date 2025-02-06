@@ -1,13 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Trip = require('../models/Trip');
-
-
-
-
-
-
-
+const Cart = require('../models/Cart');
 
 router.get("/search/", async function (req, res) {
     const { departure, arrival, date } = req.query;
@@ -60,11 +54,15 @@ router.get('/rech', async (req, res) => {
     nextDay.setDate(queryDate.getDate() + 1);
 
     try {
+        const cart = await Cart.findOne();
+        const tripsInCart = cart ? cart.trips : [];
         const trips = await Trip.find({
             departure,
             arrival,
-            date: { $gte: queryDate, $lt: nextDay }
+            date: { $gte: queryDate, $lt: nextDay },
+            _id: { $nin: tripsInCart }
         });
+
         res.json(trips);
     } catch (err) {
         res.status(500).json({ error: 'Erreur serveur' });

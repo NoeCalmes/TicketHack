@@ -5,12 +5,18 @@ document.querySelector('form').addEventListener('submit', async function(event) 
         const arrival = document.getElementById('arrival').value;
         const date = document.getElementById('date').value;
     
-        const resultContainer = document.getElementById('result');
-
+        const errorMessage = document.getElementById('error-message'); 
+        
         if (!departure || !arrival || !date) {
-            resultContainer.innerHTML = '<p>Veuillez remplir tous les champs</p>';
+            errorMessage.textContent = 'Veuillez remplir tous les champs';
+            errorMessage.style.display = 'block'; // 🔹 Affiche le message d'erreur
             return;
+        } else {
+            errorMessage.style.display = 'none'; // 🔹 Cache le message si tout est bon
         }
+    
+        const resultContainer = document.getElementById('result');
+        
 
         try {
 
@@ -32,18 +38,22 @@ document.querySelector('form').addEventListener('submit', async function(event) 
     
             trips.forEach(trip => {
 
-
-                
                 const tripElement = document.createElement('div');
                 tripElement.classList.add('trip');
                 tripElement.innerHTML = `
                     <h3>${trip.departure} ➔ ${trip.arrival}</h3>
                     <p>Date : ${new Date(trip.date).toLocaleDateString()}</p>
-                    <p>Prix : ${trip.price} €</p>
+                    <p class="price">Prix : ${trip.price} €</p>
+                   <button class="book-btn" data-trip-id="${trip._id}">Book</button>
                 `;
+
+                tripElement.querySelector('.book-btn').addEventListener('click', function() {
+                    addToCart(trip._id);  
+                });
+                
+                
                 resultContainer.appendChild(tripElement);
                
-                
             });
         } catch (error) {
             console.error('Erreur lors de la récupération des trajets :', error);
@@ -51,3 +61,25 @@ document.querySelector('form').addEventListener('submit', async function(event) 
         }
     });
     
+
+    function addToCart(tripId) {
+        fetch('http://localhost:5000/apicart/cart/trips', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ tripIds: [tripId] })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Trip added to cart:', data);
+            window.location.href = "./cart.html";
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    
+    
+
+
+
+

@@ -8,7 +8,9 @@
 body {
     font-family: Arial, sans-serif;
 }
-
+.trip h3,.trip p{
+    color: black;
+}
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -17,11 +19,44 @@ body {
     padding: 15px 30px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
+.trip  {
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0px 5px 0px;
+    gap: 10px;
+}
 
+.trip-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f5eeee;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.delete-btn {
+    background-color: #449e85;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: #449e85;
+}
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #459e85;
+    color: #459e85!important;
+}
+
+a:visited {
+    color: #459e85!important;
 }
 
 .nav-links {
@@ -57,32 +92,46 @@ body {
 h1 {
     font-size: 3rem;
     margin-bottom: 10px;
+    
 }
 
 h2 {
     font-size: 1.5rem;
     margin-bottom: 30px;
 }
-
+label {
+    color: black;
+}
 .forms {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; 
+    gap: 40px; 
+    width: 110%;
 }
-
+body.cart {
+    background-color: #eff2f1;
+}
 .form-container {
     background-color: rgba(255, 255, 255);
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
-    width: 45%;
+    width: 50%; 
+    max-width: 600px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .form-container p {
     color: black;
 }
 
+.price {
+margin-right: 5px;
+}
 .form-container form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    width: 100%; 
 }
 
 .form-container label {
@@ -100,7 +149,7 @@ h2 {
 
 .form-container button {
     padding: 10px;
-    background-color: #459e85;
+    background-color: #367c68;
     color: white;
     border: none;
     border-radius: 5px;
@@ -109,11 +158,65 @@ h2 {
 }
 
 .form-container button:hover {
-    background-color: #0056b3;
+    background-color: #367c68;
 }
 
 .image-container img {
     width: 100%;
     max-width: 300px;
     border-radius: 10px;
+}
+
+.content-panier {
+    width: 60vw;
+    background-color: white;
+    padding: 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.validation-panier {
+background-color: #00153e;
+border-bottom-left-radius: 20px;
+display: flex;
+border-bottom-right-radius: 20px;
+height: 50px;
+color: white;
+}
+
+.btn-panier {
+    background: #459e85;
+    margin-inline-start: auto;
+    border: none;
+    margin-right: 30px;
+    height: 25px;
+    margin-top: 10px;
+    width: 15%;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: ease 0.5s;
+
+}
+
+
+.btn-panier:hover {
+    background: white;
+    color: #459e85;
+    cursor: pointer;
+    transition: ease 0.5s;
+    transform: scale(1.1);
+}
+
+#booking-container div {
+    padding: 5px;
+    background: #f5eeee;
+    border-radius: 10px;
+    margin: 15px;
+    display: flex;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+ 
+
 }
